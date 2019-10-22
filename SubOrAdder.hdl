@@ -1,0 +1,28 @@
+/* if sub == 1 then out = a - b
+   else  out = a + b
+
+*/
+
+CHIP SubOrAdder {
+     IN a, b, sub;
+     OUT out;
+     PARTS:
+     //put your code here
+
+
+
+
+    //a+b
+   HalfAdder(a=a,b=b,carry=c1,sum=outa);
+
+   //a-b=a+(notb)+1
+   Not(in=b,out=notb);    
+ 
+   HalfAdder(a=notb,b[0]=true,carry=c2,sum=inb);
+   
+    HalfAdder(a=a,b=inb,carry=c3,sum=outc);
+
+    Mux(a=outa,b=outc,sel=sub,out=out );
+
+     
+}

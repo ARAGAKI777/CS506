@@ -1,0 +1,15 @@
+/*Please read HW3 instruction for requirements of High4*/
+CHIP High4{
+    IN in[4];
+    OUT out[2];
+    PARTS: //put your implementation here
+         
+         Mux(a=in[2],b=in[3],sel=in[3],out=out[1]);
+        
+         Not(in=in[2],out=notin);
+         
+         Mux(a=in[1],b=notin,sel=in[2],out=outa);
+    
+         Mux(a=outa,b=in[3],sel=in[3],out=out[0]);
+    
+}
